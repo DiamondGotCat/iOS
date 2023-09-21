@@ -8,64 +8,54 @@ body {
   text-align:center;
   padding:20px 0;
 }
-      
-.bn29 {
-  border: none;
-  padding: 0.8em 2.5em;
-  outline: none;
-  color: white;
-  font-style: 1.2em;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  background: none;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+/*丸がボタンに変形する*/
+
+.btntransform{
+    /*丸の基点とするためrelativeを指定*/
+	position: relative;
+    /*ボタンの形状*/	
+    display: inline-block;
+	padding:0 0 0 15px;
+	line-height: 50px;
+    color: #333;
+    text-decoration: none;
+    outline: none;
 }
 
-.bn29:before,
-.bn29:after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 10em;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  width: 105%;
-  height: 105%;
-  content: "";
-  z-index: -2;
-  background-size: 400% 400%;
-  background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
-  );
+/* 丸が動く */
+.btntransform::before{
+	content:'';
+    /*絶対配置で丸の位置を決める*/
+	position:absolute;
+	left:0;
+	z-index: -1;
+    /*丸の形状*/
+	width:50px;
+	height:50px;
+	background:#ccc;
+	border-radius:25px;
+    /*アニメーションの指定*/
+    transition:.3s ease-out;
 }
 
-.bn29:before {
-  -webkit-filter: blur(7px);
-  filter: blur(7px);
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  -webkit-animation: pulse 10s infinite ease;
-  animation: pulse 10s infinite ease;
+/*hoverした際の形状*/
+.btntransform:hover::before{
+	width:212px;
 }
 
-.bn29:after {
-  -webkit-filter: blur(0.3px);
-  filter: blur(0.3px);
-}
+/* 矢印の形状 */
+.btntransform::after{
+	position: absolute;
+    content: '';
+    top: 1.3em;
+    right: -15px;
+    width: 5px;
+    height: 5px;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: rotate(45deg);
+}      
 
-.bn29:hover:before {
-  width: 115%;
-  height: 115%;
-}
     </style>
   </head>
   
@@ -73,8 +63,8 @@ body {
 
     <h1>iOSウィキ</h1>
     <h2>非公式ながらもiOSのことをまとめてます。<br>完成まで時間がかかりますが、頑張ります。</h2>
-    <a href="https://daiyaneko-org.gitbook.io/ios-wiki/"><button class="bn29">行く</button></a>
-
+    <a href=""><button class="bn29">行く</button></a>
+    <a href="https://daiyaneko-org.gitbook.io/ios-wiki/" class="btntransform">行く</a>
     
   </body>
 </html>
